@@ -82,7 +82,42 @@ function App() {
       description: "Data Analysis",
       startDate: new Date("1997-12-12T10:00:00"), // Dec 18, 1997, 10:00 AM
       endDate: new Date("1997-12-21T15:45:00"), // Dec 20, 1997, 3:45 PM
-    }
+    },
+    {
+      title: "Task 11",
+      color: "#7BD699",
+      description: "Data Collection",
+      startDate: new Date("1997-12-16T09:00:00"), // Dec 14, 1997, 9:00 AM
+      endDate: new Date("1997-12-16T17:30:00"), // Dec 16, 1997, 5:30 PM
+    },
+    {
+      title: "Task 12",
+      color: "#eec900",
+      description: "Data Collection",
+      startDate: new Date("1997-12-16T14:00:00"), // Dec 14, 1997, 9:00 AM
+      endDate: new Date("1997-12-16T17:30:00"), // Dec 16, 1997, 5:30 PM
+    },
+    {
+      title: "Task 13",
+      color: "#7B9CD7",
+      description: "Data Collection",
+      startDate: new Date("1997-12-16T09:00:00"), // Dec 14, 1997, 9:00 AM
+      endDate: new Date("1997-12-16T09:30:00"), // Dec 16, 1997, 5:30 PM
+    },
+    {
+      title: "Task 14",
+      color: "#7B9CD7",
+      description: "Data Collection",
+      startDate: new Date("1997-12-16T09:00:00"), // Dec 14, 1997, 9:00 AM
+      endDate: new Date("1997-12-16T09:30:00"), // Dec 16, 1997, 5:30 PM
+    },
+    {
+      title: "Task 15",
+      color: "#7BD699",
+      description: "Data Collection",
+      startDate: new Date("1997-12-18T09:00:00"), // Dec 14, 1997, 9:00 AM
+      endDate: new Date("1997-12-18T17:30:00"), // Dec 16, 1997, 5:30 PM
+    },
   ]
 
   return (

@@ -11,8 +11,11 @@ const CalendarHeader: FC<{ date: Date, weekdays: Array<string> }> = ({ date, wee
         </div>
     )
 
-    return <div className='grid grid-cols-7 gap-1 ml-14'>
+    return <div className="flex flex-row gap-1">
+        <div className="grow-0 basis-14"></div>
+        <div className='grow grid grid-cols-7 gap-1'>
         {daysHeader}
+        </div>
     </div>
 }
 
