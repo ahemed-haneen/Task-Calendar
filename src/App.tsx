@@ -1,6 +1,6 @@
 // import { useState } from 'react'
-import './App.css'
-import TaskCalendar from './components/Calendars/Calendar'
+import "./App.css";
+import TaskCalendar from "./components/Calendars/Calendar";
 
 export type TaskProps = {
   title: string;
@@ -8,10 +8,10 @@ export type TaskProps = {
   startDate: Date;
   endDate: Date;
   color: string;
-}
+};
 
 function App() {
-  const TODAY = new Date('12/16/1997')
+  const TODAY = new Date("12/16/1997");
   const TASKS: Array<TaskProps> = [
     {
       title: "Task 1",
@@ -118,7 +118,7 @@ function App() {
       startDate: new Date("1997-12-18T09:00:00"), // Dec 14, 1997, 9:00 AM
       endDate: new Date("1997-12-18T17:30:00"), // Dec 16, 1997, 5:30 PM
     },
-  ]
+  ];
 
   return (
     <div className="w-full h-full flex flex-col">
@@ -126,10 +126,10 @@ function App() {
         <h1>Task Calendar</h1>
       </header>
       <main className="grow overflow-y-hidden">
-        <TaskCalendar date={TODAY} type={'weekly'} tasks={TASKS} />
+        <TaskCalendar date={TODAY} type={"weekly"} tasks={TASKS} />
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
