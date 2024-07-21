@@ -18,7 +18,7 @@ const CalendarCells: FC<{
 
     for (let min15Count = 0; min15Count < 24; min15Count++) {
       MIN_15_UNITS.push(
-        <div className={"bg-stone-100 pr-0 grid grid-rows-4"}>
+        <div key={'cell-click' + min15Count } className={"bg-stone-100 pr-0 grid grid-rows-4"}>
           <div className="pr-6 h-3"></div>
           <div className="pr-6 h-3"></div>
           <div className="pr-6 h-3"></div>
@@ -27,10 +27,10 @@ const CalendarCells: FC<{
       );
     }
     DAYS_COLUMN.push(
-      <div className="relative grid gap-0.5 grow">
+      <div key={'hour-marker-weekly' + dayOfWeek} className="relative grid gap-0.5 grow">
         {MIN_15_UNITS}
         <div className="grid absolute grid-rows-96 auto-cols-auto h-full w-full overflow-hidden pr-3">
-          {tasks[CURRENT_DATE.toDateString()]?.map((task) => {
+          {tasks[CURRENT_DATE.toDateString()]?.map((task, index) => {
             const START_TIME_INDEX =
               task.startDate.getHours() * 4 +
               task.startDate.getMinutes() / 15 +
@@ -40,6 +40,7 @@ const CalendarCells: FC<{
 
             return (
               <div
+                key={ 'calendar-cell' + index + '-' + task.title}
                 className="text-left px-2 py-2 text-white font-semibold text-xs rounded-lg mr-0.5 min-w-0 text-ellipsis overflow-hidden whitespace-nowrap"
                 style={{
                   background: task.color,
@@ -63,7 +64,7 @@ const CalendarCells: FC<{
           const ITEMS = [];
           for (let hourCount = 0; hourCount < 24; hourCount++) {
             ITEMS.push(
-              <div className={"bg-stone-100 pr-0 h-12 relative"}>
+              <div key={ 'hour-mark' + hourCount } className={"bg-stone-100 pr-0 h-12 relative"}>
                 <span className="absolute justify-self-center bg-stone-100 w-max -translate-x-2/4 -translate-y-2/4 z-20 text-xs">
                   {hourCount != 0 &&
                     hourCount + (hourCount > 11 ? " AM" : " PM")}

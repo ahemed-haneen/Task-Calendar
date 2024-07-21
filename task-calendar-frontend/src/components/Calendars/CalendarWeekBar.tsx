@@ -11,7 +11,7 @@ const CalendarWeekBar: FC<{
     <div className="flex flex-row gap-1">
       <div className="bg-stone-100 basis-14 grow-0"></div>
       <div className="grid bg-stone-100 grid-auto-rows grow grid-cols-7 grid-flow-dense">
-        {tasks.map((task) => {
+        {tasks.map((task, index) => {
           const IS_DATE_BEFORE = !isDateInRange(
             date,
             task.startDate,
@@ -37,7 +37,7 @@ const CalendarWeekBar: FC<{
           // ! *******************************
 
           return (
-            <div
+            <div key={'week-bar' + index + '-' + task.title}
               className={
                 `text-left px-2 py-2 text-white font-semibold text-xs m-0.5` +
                 (IS_DATE_BEFORE ? "" : " rounded-l-xl") +

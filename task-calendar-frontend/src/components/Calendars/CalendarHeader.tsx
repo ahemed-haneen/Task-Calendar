@@ -10,6 +10,7 @@ const CalendarHeader: FC<{ date: Date; weekdays: Array<string> }> = ({
 
   const DAY_HEADERS = weekdays.map((day, index) => (
     <div
+      key={'header' + index}
       className={
         "text-left font-medium text-sm bg-stone-100 p-2 h-max" +
         (index == dayIndex ? " border-b-4 border-black" : "")
