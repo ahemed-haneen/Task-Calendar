@@ -1,7 +1,7 @@
 // import { useState } from 'react'
 import { useEffect, useState } from "react";
 import "./App.css";
-import TaskCalendar from "./components/Calendars/Calendar";
+import TaskCalendar from './components/Calendars/Calendar';
 import axios from 'axios'
 
 export type TaskProps = {
@@ -14,19 +14,6 @@ export type TaskProps = {
 
 function App() {
   const TODAY = new Date("12/16/1997");
-  const [_tasks, setTasks] = useState([])
-  useEffect(() => {
-    axios.get('http://localhost:8000/tasks').then(response => {
-      setTasks(response.data.map((datum: TaskProps) => {return { title: datum.title,
-        color: datum.color,
-        description: datum.description,
-        startDate: new Date(datum.startDate),
-        endDate: new Date(datum.endDate)
-      }}))
-      }).catch(error => {
-        console.log(error)
-      });
-  }, []);
 
   const TASKS: Array<TaskProps> = [
     {
@@ -135,6 +122,23 @@ function App() {
       endDate: new Date("1997-12-18T17:30:00"), // Dec 16, 1997, 5:30 PM
     },
   ];
+
+  const [_tasks, setTasks] = useState<TaskProps[]>
+  ([])
+  useEffect(() => {
+    axios.get('http://localhost:8000/tasks').then(response => {
+      setTasks(response.data.map((datum: TaskProps) => {return { title: datum.title,
+        color: datum.color,
+        description: datum.description,
+        startDate: new Date(datum.startDate),
+        endDate: new Date(datum.endDate)
+      }}))
+      }).catch(error => {
+        console.log(error)
+        setTasks(TASKS)
+      });
+  }, []);
+
 
   return (
     <div className="w-full h-full flex flex-col">
