@@ -12,6 +12,8 @@ export type TaskProps = {
   color: string;
 };
 
+const API_ENDPOINT = import.meta.env.VITE_TASK_ENDPOINT
+
 function App() {
   const TODAY = new Date("12/16/1997");
 
@@ -126,7 +128,7 @@ function App() {
   const [_tasks, setTasks] = useState<TaskProps[]>
   ([])
   useEffect(() => {
-    axios.get('http://localhost:8000/tasks').then(response => {
+    axios.get(API_ENDPOINT + '/tasks').then(response => {
       setTasks(response.data.map((datum: TaskProps) => {return { title: datum.title,
         color: datum.color,
         description: datum.description,
