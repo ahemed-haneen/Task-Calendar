@@ -29,6 +29,11 @@ ALLOWED_HOSTS = ['13.229.201.178', 'localhost']
 
 
 # Application definition
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
