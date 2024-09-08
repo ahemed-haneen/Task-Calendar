@@ -27,8 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['13.229.201.178', 'localhost']
 
-
+ALLOWED_ORIGIN = ["*"]
 # Application definition
+# REST_FRAMEWORK = {
+#     "DEFAULT_PERMISSION_CLASSES": [
+#         "rest_framework.permissions.IsAuthenticated",
+#     ],
+# }
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'taskApi',
+    'events',
     'rest_framework',
     'corsheaders'
 ]
