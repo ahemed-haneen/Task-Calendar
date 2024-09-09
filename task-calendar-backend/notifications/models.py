@@ -1,9 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 
 # Create your models here.
+User = get_user_model()
+
 class Notification(models.Model):
     recipient = models.ForeignKey(User, on_delete=models.CASCADE,related_name='notifications')
     message = models.TextField()
