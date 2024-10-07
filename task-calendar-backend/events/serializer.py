@@ -1,11 +1,12 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from .models import Event
 
+User = get_user_model()
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "username", "email"]
+        fields = ["id", "email"]
 
 class EventSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
