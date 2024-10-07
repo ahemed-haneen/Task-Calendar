@@ -1,10 +1,11 @@
 // import { useState } from 'react'
 import { useEffect, useState } from "react";
 import "./App.css";
-import TaskCalendar from './components/Calendars/Calendar';
-import axios from 'axios'
+import TaskCalendar from "./components/Calendars/Calendar";
+import axios from "axios";
+import TopAppBar from "./components/TopAppBar";
 
-export type TaskProps = {
+export type EventProps = {
   title: string;
   description: string;
   startDate: Date;
@@ -12,12 +13,13 @@ export type TaskProps = {
   color: string;
 };
 
-const API_ENDPOINT = import.meta.env.VITE_TASK_ENDPOINT
+const PREFIX = "/api/v1";
+export const API_ENDPOINT = import.meta.env.VITE_TASK_ENDPOINT + PREFIX;
 
 function App() {
-  const TODAY = new Date("12/16/1997");
+  const TODAY = new Date();
 
-  const TASKS: Array<TaskProps> = [
+  const EVENTS: Array<EventProps> = [
     {
       title: "Task 1",
       color: "#7B9CD7",
@@ -125,30 +127,36 @@ function App() {
     },
   ];
 
-  const [_tasks, setTasks] = useState<TaskProps[]>
-  ([])
+  const [_events, setEvents] = useState<EventProps[]>([]);
   useEffect(() => {
-    axios.get(API_ENDPOINT + '/tasks').then(response => {
-      setTasks(response.data.map((datum: TaskProps) => {return { title: datum.title,
-        color: datum.color,
-        description: datum.description,
-        startDate: new Date(datum.startDate),
-        endDate: new Date(datum.endDate)
-      }}))
-      }).catch(error => {
-        console.log(error)
-        setTasks(TASKS)
+    axios
+      .get(API_ENDPOINT + "/events")
+      .then((response) => {
+        setEvents(
+          response.data.map((datum: EventProps) => {
+            return {
+              title: datum.title,
+              color: datum.color,
+              description: datum.description,
+              startDate: new Date(datum.startDate),
+              endDate: new Date(datum.endDate),
+            };
+          }),
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+        setEvents(EVENTS);
       });
   }, []);
-
 
   return (
     <div className="w-full h-full flex flex-col">
       <header className="text-left mb-6 text-4xl font-semibold text-white grow-0">
-        <h1>Task Calendar</h1>
+        <TopAppBar date={TODAY} />
       </header>
       <main className="grow overflow-y-hidden">
-        <TaskCalendar date={TODAY} type={"weekly"} tasks={_tasks} />
+        <TaskCalendar date={TODAY} type={"weekly"} events={_events} />
       </main>
     </div>
   );
