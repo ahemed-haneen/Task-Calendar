@@ -1,11 +1,12 @@
 import { FC } from "react";
-import { TaskProps } from "../../App";
+import { EventProps } from "../Main";
+import "../../styles/main.scss";
 
 const CalendarCells: FC<{
   date: Date;
-  tasks: { [key: string]: Array<TaskProps> };
+  events: { [key: string]: Array<EventProps> };
   weekdays: Array<string>;
-}> = ({ date, tasks, weekdays }) => {
+}> = ({ date, events, weekdays }) => {
   //  TODO: Refactor this code
   const DAYS_COLUMN = [];
   //  TODO: Refactor this code
@@ -18,7 +19,10 @@ const CalendarCells: FC<{
 
     for (let min15Count = 0; min15Count < 24; min15Count++) {
       MIN_15_UNITS.push(
-        <div key={'cell-click' + min15Count } className={"bg-stone-100 pr-0 grid grid-rows-4"}>
+        <div
+          key={"cell-click" + min15Count}
+          className={"pr-0 grid grid-rows-4 border"}
+        >
           <div className="pr-6 h-3"></div>
           <div className="pr-6 h-3"></div>
           <div className="pr-6 h-3"></div>
@@ -27,28 +31,33 @@ const CalendarCells: FC<{
       );
     }
     DAYS_COLUMN.push(
-      <div key={'hour-marker-weekly' + dayOfWeek} className="relative grid gap-0.5 grow">
+      <div
+        key={"hour-marker-weekly" + dayOfWeek}
+        className="relative grid grow"
+      >
         {MIN_15_UNITS}
         <div className="grid absolute grid-rows-96 auto-cols-auto h-full w-full overflow-hidden pr-3">
-          {tasks[CURRENT_DATE.toDateString()]?.map((task, index) => {
+          {events[CURRENT_DATE.toDateString()]?.map((event, index) => {
             const START_TIME_INDEX =
-              task.startDate.getHours() * 4 +
-              task.startDate.getMinutes() / 15 +
+              event.startDate.getHours() * 4 +
+              event.startDate.getMinutes() / 15 +
               1;
             const END_TIME_INDEX =
-              task.endDate.getHours() * 4 + task.endDate.getMinutes() / 15 + 1;
+              event.endDate.getHours() * 4 +
+              event.endDate.getMinutes() / 15 +
+              1;
 
             return (
               <div
-                key={ 'calendar-cell' + index + '-' + task.title}
+                key={"calendar-cell" + index + "-" + event.title}
                 className="text-left px-2 py-2 text-white font-semibold text-xs rounded-lg mr-0.5 min-w-0 text-ellipsis overflow-hidden whitespace-nowrap"
                 style={{
-                  background: task.color,
+                  background: event.color,
                   gridRowStart: START_TIME_INDEX,
                   gridRowEnd: END_TIME_INDEX,
                 }}
               >
-                {task.title}
+                {event.title}
               </div>
             );
           })}
@@ -58,14 +67,17 @@ const CalendarCells: FC<{
   }
 
   return (
-    <div className="relative flex flex-row gap-1 overflow-y-auto -mr-3">
-      <div className="basis-14 grow-0 grid grid-rows-24 gap-0.5">
+    <div className="relative flex flex-row overflow-y-auto -mr-3">
+      <div className="basis-14 grow-0 grid grid-rows-24">
         {(() => {
           const ITEMS = [];
           for (let hourCount = 0; hourCount < 24; hourCount++) {
             ITEMS.push(
-              <div key={ 'hour-mark' + hourCount } className={"bg-stone-100 pr-0 h-12 relative"}>
-                <span className="absolute justify-self-center bg-stone-100 w-max -translate-x-2/4 -translate-y-2/4 z-20 text-xs">
+              <div
+                key={"hour-mark" + hourCount}
+                className={"pr-0 h-12 relative"}
+              >
+                <span className="absolute justify-self-center w-max -translate-x-2/4 -translate-y-2/4 z-20 text-xs">
                   {hourCount != 0 &&
                     hourCount + (hourCount > 11 ? " AM" : " PM")}
                 </span>
@@ -75,7 +87,7 @@ const CalendarCells: FC<{
           return ITEMS;
         })()}
       </div>
-      <div className="grid grid-cols-7 grow gap-1">{DAYS_COLUMN}</div>
+      <div className="grid grid-cols-7 grow">{DAYS_COLUMN}</div>
     </div>
   );
 };

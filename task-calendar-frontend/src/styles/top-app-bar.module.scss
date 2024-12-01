@@ -1,0 +1,14 @@
+.top_app_bar {
+    height: 65px;
+    color: #191919;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    line-height: 30px;
+    .left {
+        margin-right: 20px;
+    }
+    .drawer {
+        padding: 20px;
+    }
+}
