@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { EventProps } from "../../App";
+import { EventProps } from "../Main";
+import "../../styles/main.scss";
 
 const CalendarCells: FC<{
   date: Date;
@@ -20,7 +21,7 @@ const CalendarCells: FC<{
       MIN_15_UNITS.push(
         <div
           key={"cell-click" + min15Count}
-          className={"bg-stone-100 pr-0 grid grid-rows-4"}
+          className={"pr-0 grid grid-rows-4 border"}
         >
           <div className="pr-6 h-3"></div>
           <div className="pr-6 h-3"></div>
@@ -32,7 +33,7 @@ const CalendarCells: FC<{
     DAYS_COLUMN.push(
       <div
         key={"hour-marker-weekly" + dayOfWeek}
-        className="relative grid gap-0.5 grow"
+        className="relative grid grow"
       >
         {MIN_15_UNITS}
         <div className="grid absolute grid-rows-96 auto-cols-auto h-full w-full overflow-hidden pr-3">
@@ -66,17 +67,17 @@ const CalendarCells: FC<{
   }
 
   return (
-    <div className="relative flex flex-row gap-1 overflow-y-auto -mr-3">
-      <div className="basis-14 grow-0 grid grid-rows-24 gap-0.5">
+    <div className="relative flex flex-row overflow-y-auto -mr-3">
+      <div className="basis-14 grow-0 grid grid-rows-24">
         {(() => {
           const ITEMS = [];
           for (let hourCount = 0; hourCount < 24; hourCount++) {
             ITEMS.push(
               <div
                 key={"hour-mark" + hourCount}
-                className={"bg-stone-100 pr-0 h-12 relative"}
+                className={"pr-0 h-12 relative"}
               >
-                <span className="absolute justify-self-center bg-stone-100 w-max -translate-x-2/4 -translate-y-2/4 z-20 text-xs">
+                <span className="absolute justify-self-center w-max -translate-x-2/4 -translate-y-2/4 z-20 text-xs">
                   {hourCount != 0 &&
                     hourCount + (hourCount > 11 ? " AM" : " PM")}
                 </span>
@@ -86,7 +87,7 @@ const CalendarCells: FC<{
           return ITEMS;
         })()}
       </div>
-      <div className="grid grid-cols-7 grow gap-1">{DAYS_COLUMN}</div>
+      <div className="grid grid-cols-7 grow">{DAYS_COLUMN}</div>
     </div>
   );
 };

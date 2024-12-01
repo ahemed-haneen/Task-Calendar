@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
 import { Drawer, FormControl, Stack, TextField } from "@mui/material";
 import { DateTimePicker } from "@mui/x-date-pickers";
-import { API_ENDPOINT } from "../App";
+import { API_ENDPOINT } from "./Main";
 import axios from "axios";
 import { getRandomHexColor } from "../utils/common";
 

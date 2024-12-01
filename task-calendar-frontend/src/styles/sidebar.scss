@@ -1,0 +1,59 @@
+@import './_variables.scss';
+
+.calendar-sidebar {
+    width: 20%;
+    padding: 15px;
+    background-color: $lightGrayBackgroundColor;
+    border-radius: 20px 0 0 20px;
+}
+
+.calendar-sidebar h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.calendar-sidebar .month-picker {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-sidebar .month-picker button {
+    background-color: #66b3ff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.calendar-sidebar .month-picker button:hover {
+    background-color: #4d9ae6;
+}
+
+.calendar-sidebar .calendar-view {
+margin-top: 20px;
+}
+
+.calendar-sidebar .event-category {
+display: flex;
+align-items: center;
+margin-top: 10px;
+font-size: 14px;
+color: #333333;
+}
+
+.calendar-sidebar .event-category span {
+display: inline-block;
+width: 15px;
+height: 15px;
+border-radius: 50%;
+margin-right: 10px;
+}
+
+.calendar-sidebar .event-category.personal { background-color: #bde6d8; }
+.calendar-sidebar .event-category.work { background-color: #dab7f3; }
+.calendar-sidebar .event-category.event { background-color: #f9b6a4; }

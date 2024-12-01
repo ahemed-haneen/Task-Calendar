@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { EventProps } from "../../App";
+import { EventProps } from "../Main";
 import isDateInRange from "../../utils/isDateBefore";
 
 const CalendarWeekBar: FC<{
@@ -9,8 +9,8 @@ const CalendarWeekBar: FC<{
 }> = ({ date, events }) => {
   return (
     <div className="flex flex-row gap-1">
-      <div className="bg-stone-100 basis-14 grow-0"></div>
-      <div className="grid bg-stone-100 grid-auto-rows grow grid-cols-7 grid-flow-dense">
+      <div className="basis-14 grow-0"></div>
+      <div className="grid grid-auto-rows grow grid-cols-7 grid-flow-dense">
         {events.map((event, index) => {
           const IS_DATE_BEFORE = !isDateInRange(
             date,

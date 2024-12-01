@@ -1,0 +1,118 @@
+@import './_variables.scss';
+
+.calendar-container {
+  font-family: $fontFamily;
+  display: flex;
+  padding: 50px;
+  background-color: $grayBackgroundColor;
+}
+/* Main Calendar View */
+.calendar-view {
+  flex: 1;
+  background-color: $lightWhiteBackgroundColor;
+  padding: 20px;
+  border-radius: 0 20px 20px 0;
+  .calendar-navbar {
+    display: flex;
+    margin: auto;
+    background-color: $lightGrayBackgroundColor;
+    border-radius: 5px;
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    .nav-btn {
+      padding: 5px 15px;
+      &.active {
+        border: 1px solid #e3e3e3;
+        border-radius: 5px;
+        background-color: $lightWhiteBackgroundColor;
+      }
+    }
+  }
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+  }
+  .view-buttons{
+    display: flex;
+    gap: 10px;
+    button {
+      background-color: #fff;
+      border: 1px solid #e3e3e3;
+      border-radius: 2px;
+      height: 35px;
+      padding: 5px 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 18px;
+      color: #333333;
+      cursor: pointer;
+      &:hover {
+        color: #66b3ff;
+      }
+      &.active {
+        color: #66b3ff;
+      }
+    } 
+  }
+}
+
+.day {
+  background-color: #fff;
+  border: 1px solid #e3e3e3;
+  border-radius: 5px;
+  height: 120px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 14px;
+  color: #333333;
+  &.today {
+    color: $activeButtonColor;
+    border-bottom: 4px solid $activeButtonColor;
+  }
+}
+
+/* Event Cards */
+.event {
+  margin-top: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &.personal { background-color: #bde6d8; color: #333333; }
+  &.work { background-color: #dab7f3; color: #333333; }
+  &.special { background-color: #f9b6a4; color: #333333; }
+  &.workout { background-color: #d9e4f6; color: #333333; }
+  span.time {
+    font-size: 10px;
+    color: #ffffff;
+  }
+}
+
+/* Settings and Info */
+.settings {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #555555;
+  a {
+    text-decoration: none;
+    color: #66b3ff;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

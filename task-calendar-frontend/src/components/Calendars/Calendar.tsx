@@ -1,7 +1,7 @@
 import { FC } from "react";
 import CalendarHeader from "./CalendarHeader";
 import CalendarCells from "./CalendarCells";
-import { EventProps } from "../../App";
+import { EventProps } from "../Main";
 import CalendarWeekBar from "./CalendarWeekBar";
 
 const TaskCalendar: FC<{
@@ -27,7 +27,7 @@ const TaskCalendar: FC<{
     }
   });
   return (
-    <div className="h-full grid grid-rows-[auto_auto_auto] gap-2 bg-stone-300 rounded p-4 overflow-y-hidden">
+    <div className="grid grid-rows-[auto_auto_auto] gap-2 rounded p-4 overflow-y-hidden">
       <CalendarHeader date={date} weekdays={WEEKDAYS} />
       <CalendarWeekBar date={date} events={LONG_EVENTS} />
       <CalendarCells date={date} events={DAY_EVENTS} weekdays={WEEKDAYS} />
